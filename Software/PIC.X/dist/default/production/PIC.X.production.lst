@@ -1,0 +1,388 @@
+
+
+Microchip MPLAB XC8 Assembler V2.05 build -831301201 
+                                                                                               Mon Jul 01 20:17:49 2019
+
+Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1 
+     1                           	processor	16F876A
+     2                           	opt	pw 120
+     3                           	opt	flic
+     4                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     5                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+     6                           	psect	maintext,global,class=CODE,split=1,delta=2
+     7                           	dabs	1,0x7E,2
+     8  0000                     
+     9                           ; Version 2.05
+    10                           ; Generated 20/12/2018 GMT
+    11                           ; 
+    12                           ; Copyright © 2018, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    13                           ; All rights reserved.
+    14                           ; 
+    15                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    16                           ; 
+    17                           ; Redistribution and use in source and binary forms, with or without modification, are
+    18                           ; permitted provided that the following conditions are met:
+    19                           ; 
+    20                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    21                           ;        conditions and the following disclaimer.
+    22                           ; 
+    23                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    24                           ;        of conditions and the following disclaimer in the documentation and/or other
+    25                           ;        materials provided with the distribution.
+    26                           ; 
+    27                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    28                           ;        software without specific prior written permission.
+    29                           ; 
+    30                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    31                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    32                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    33                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    34                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    35                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    36                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    37                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    38                           ; 
+    39                           ; 
+    40                           ; Code-generator required, PIC16F876A Definitions
+    41                           ; 
+    42                           ; SFR Addresses
+    43  0000                     	;# 
+    44  0001                     	;# 
+    45  0002                     	;# 
+    46  0003                     	;# 
+    47  0004                     	;# 
+    48  0005                     	;# 
+    49  0006                     	;# 
+    50  0007                     	;# 
+    51  000A                     	;# 
+    52  000B                     	;# 
+    53  000C                     	;# 
+    54  000D                     	;# 
+    55  000E                     	;# 
+    56  000E                     	;# 
+    57  000F                     	;# 
+    58  0010                     	;# 
+    59  0011                     	;# 
+    60  0012                     	;# 
+    61  0013                     	;# 
+    62  0014                     	;# 
+    63  0015                     	;# 
+    64  0015                     	;# 
+    65  0016                     	;# 
+    66  0017                     	;# 
+    67  0018                     	;# 
+    68  0019                     	;# 
+    69  001A                     	;# 
+    70  001B                     	;# 
+    71  001B                     	;# 
+    72  001C                     	;# 
+    73  001D                     	;# 
+    74  001E                     	;# 
+    75  001F                     	;# 
+    76  0081                     	;# 
+    77  0085                     	;# 
+    78  0086                     	;# 
+    79  0087                     	;# 
+    80  008C                     	;# 
+    81  008D                     	;# 
+    82  008E                     	;# 
+    83  0091                     	;# 
+    84  0092                     	;# 
+    85  0093                     	;# 
+    86  0094                     	;# 
+    87  0098                     	;# 
+    88  0099                     	;# 
+    89  009C                     	;# 
+    90  009D                     	;# 
+    91  009E                     	;# 
+    92  009F                     	;# 
+    93  010C                     	;# 
+    94  010D                     	;# 
+    95  010E                     	;# 
+    96  010F                     	;# 
+    97  018C                     	;# 
+    98  018D                     	;# 
+    99  0000                     	;# 
+   100  0001                     	;# 
+   101  0002                     	;# 
+   102  0003                     	;# 
+   103  0004                     	;# 
+   104  0005                     	;# 
+   105  0006                     	;# 
+   106  0007                     	;# 
+   107  000A                     	;# 
+   108  000B                     	;# 
+   109  000C                     	;# 
+   110  000D                     	;# 
+   111  000E                     	;# 
+   112  000E                     	;# 
+   113  000F                     	;# 
+   114  0010                     	;# 
+   115  0011                     	;# 
+   116  0012                     	;# 
+   117  0013                     	;# 
+   118  0014                     	;# 
+   119  0015                     	;# 
+   120  0015                     	;# 
+   121  0016                     	;# 
+   122  0017                     	;# 
+   123  0018                     	;# 
+   124  0019                     	;# 
+   125  001A                     	;# 
+   126  001B                     	;# 
+   127  001B                     	;# 
+   128  001C                     	;# 
+   129  001D                     	;# 
+   130  001E                     	;# 
+   131  001F                     	;# 
+   132  0081                     	;# 
+   133  0085                     	;# 
+   134  0086                     	;# 
+   135  0087                     	;# 
+   136  008C                     	;# 
+   137  008D                     	;# 
+   138  008E                     	;# 
+   139  0091                     	;# 
+   140  0092                     	;# 
+   141  0093                     	;# 
+   142  0094                     	;# 
+   143  0098                     	;# 
+   144  0099                     	;# 
+   145  009C                     	;# 
+   146  009D                     	;# 
+   147  009E                     	;# 
+   148  009F                     	;# 
+   149  010C                     	;# 
+   150  010D                     	;# 
+   151  010E                     	;# 
+   152  010F                     	;# 
+   153  018C                     	;# 
+   154  018D                     	;# 
+   155  0006                     _PORTB	set	6
+   156  0033                     _RB3	set	51
+   157  0086                     _TRISB	set	134
+   158                           
+   159                           ; #config settings
+   160  0000                     
+   161                           	psect	cinit
+   162  07FC                     start_initialization:	
+   163  07FC                     __initialization:	
+   164  07FC                     end_of_initialization:	
+   165                           ;End of C runtime variable initialization code
+   166                           
+   167  07FC                     __end_of__initialization:	
+   168  07FC  0183               	clrf	3
+   169  07FD  120A  118A  2FD5   	ljmp	_main	;jump to C main() function
+   170                           
+   171                           	psect	cstackCOMMON
+   172  0070                     __pcstackCOMMON:	
+   173  0070                     ?_main:	
+   174  0070                     ??_main:	
+   175                           ; 1 bytes @ 0x0
+   176                           
+   177                           
+   178                           ; 1 bytes @ 0x0
+   179  0070                     	ds	3
+   180                           
+   181                           	psect	maintext
+   182  07D5                     __pmaintext:	
+   183 ;;
+   184 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
+   185 ;;
+   186 ;; *************** function _main *****************
+   187 ;; Defined at:
+   188 ;;		line 21 in file "main.c"
+   189 ;; Parameters:    Size  Location     Type
+   190 ;;		None
+   191 ;; Auto vars:     Size  Location     Type
+   192 ;;		None
+   193 ;; Return value:  Size  Location     Type
+   194 ;;                  1    wreg      void 
+   195 ;; Registers used:
+   196 ;;		wreg, status,2
+   197 ;; Tracked objects:
+   198 ;;		On entry : B00/0
+   199 ;;		On exit  : 0/0
+   200 ;;		Unchanged: 0/0
+   201 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   202 ;;      Params:         0       0       0       0       0
+   203 ;;      Locals:         0       0       0       0       0
+   204 ;;      Temps:          3       0       0       0       0
+   205 ;;      Totals:         3       0       0       0       0
+   206 ;;Total ram usage:        3 bytes
+   207 ;; This function calls:
+   208 ;;		Nothing
+   209 ;; This function is called by:
+   210 ;;		Startup code after reset
+   211 ;; This function uses a non-reentrant model
+   212 ;;
+   213                           
+   214                           
+   215                           ;psect for function _main
+   216  07D5                     _main:	
+   217                           
+   218                           ;main.c: 23:     TRISB=0X00;
+   219                           
+   220                           ;incstack = 0
+   221                           ; Regs used in _main: [wreg+status,2]
+   222  07D5  1683               	bsf	3,5	;RP0=1, select bank1
+   223  07D6  1303               	bcf	3,6	;RP1=0, select bank1
+   224  07D7  0186               	clrf	6	;volatile
+   225                           
+   226                           ;main.c: 24:     PORTB=0X00;
+   227  07D8  1283               	bcf	3,5	;RP0=0, select bank0
+   228  07D9  1303               	bcf	3,6	;RP1=0, select bank0
+   229  07DA  0186               	clrf	6	;volatile
+   230  07DB                     l610:	
+   231                           
+   232                           ;main.c: 26:         {;main.c: 27:         RB3=1;
+   233  07DB  1283               	bcf	3,5	;RP0=0, select bank0
+   234  07DC  1303               	bcf	3,6	;RP1=0, select bank0
+   235  07DD  1586               	bsf	6,3	;volatile
+   236                           
+   237                           ;main.c: 28:         _delay((unsigned long)((500)*(4000000/4000.0)));
+   238  07DE  3003               	movlw	3
+   239  07DF  00F2               	movwf	??_main+2
+   240  07E0  308A               	movlw	138
+   241  07E1  00F1               	movwf	??_main+1
+   242  07E2  3055               	movlw	85
+   243  07E3  00F0               	movwf	??_main
+   244  07E4                     u17:	
+   245  07E4  0BF0               	decfsz	??_main,f
+   246  07E5  2FE4               	goto	u17
+   247  07E6  0BF1               	decfsz	??_main+1,f
+   248  07E7  2FE4               	goto	u17
+   249  07E8  0BF2               	decfsz	??_main+2,f
+   250  07E9  2FE4               	goto	u17
+   251  07EA  2FEB               	nop2
+   252                           
+   253                           ;main.c: 29:         RB3=0;
+   254  07EB  1283               	bcf	3,5	;RP0=0, select bank0
+   255  07EC  1303               	bcf	3,6	;RP1=0, select bank0
+   256  07ED  1186               	bcf	6,3	;volatile
+   257                           
+   258                           ;main.c: 30:         _delay((unsigned long)((500)*(4000000/4000.0)));
+   259  07EE  3003               	movlw	3
+   260  07EF  00F2               	movwf	??_main+2
+   261  07F0  308A               	movlw	138
+   262  07F1  00F1               	movwf	??_main+1
+   263  07F2  3055               	movlw	85
+   264  07F3  00F0               	movwf	??_main
+   265  07F4                     u27:	
+   266  07F4  0BF0               	decfsz	??_main,f
+   267  07F5  2FF4               	goto	u27
+   268  07F6  0BF1               	decfsz	??_main+1,f
+   269  07F7  2FF4               	goto	u27
+   270  07F8  0BF2               	decfsz	??_main+2,f
+   271  07F9  2FF4               	goto	u27
+   272  07FA  2FFB               	nop2
+   273  07FB  2FDB               	goto	l610
+   274  07FC                     __end_of_main:	
+   275  007E                     btemp	set	126	;btemp
+   276  007E                     wtemp0	set	126
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      3       3
+    BANK0            80      0       0
+    BANK1            80      0       0
+    BANK3            96      0       0
+    BANK2            96      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 3     3      0       0
+                                              0 COMMON     3     3      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            E      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMMON               E      3       3       1       21.4%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+STACK                0      0       0       2        0.0%
+ABS                  0      0       0       3        0.0%
+BITBANK0            50      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+BANK0               50      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+SFR2                 0      0       0       5        0.0%
+BITBANK1            50      0       0       6        0.0%
+BANK1               50      0       0       7        0.0%
+BITBANK3            60      0       0       8        0.0%
+BANK3               60      0       0       9        0.0%
+BITBANK2            60      0       0      10        0.0%
+BANK2               60      0       0      11        0.0%
+DATA                 0      0       0      12        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.05 build -831301201 
+Symbol Table                                                                                   Mon Jul 01 20:17:49 2019
+
+            __CFG_CP$OFF 0000                       u17 07E4                       u27 07F4  
+                    l610 07DB                      _RB3 0033             __CFG_CPD$OFF 0000  
+           __CFG_FOSC$HS 0000             __CFG_LVP$OFF 0000             __CFG_WDTE$ON 0000  
+           __CFG_WRT$OFF 0000                     _main 07D5                     btemp 007E  
+          __CFG_BOREN$ON 0000                     start 0000                    ?_main 0070  
+                  _PORTB 0006                    _TRISB 0086            __CFG_PWRTE$ON 0000  
+                  status 0003                    wtemp0 007E          __initialization 07FC  
+           __end_of_main 07FC                   ??_main 0070  __end_of__initialization 07FC  
+         __pcstackCOMMON 0070               __pmaintext 07D5     end_of_initialization 07FC  
+    start_initialization 07FC                ___latbits 0002            __size_of_main 0027  
