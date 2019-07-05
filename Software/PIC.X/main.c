@@ -19,6 +19,7 @@
 #include <xc.h>
 #include <stdlib.h>
 #include <stdio.h>
+
 #define _XTAL_FREQ 4000000 //4 Mhz
 
 #define RS RB1
@@ -128,32 +129,50 @@ void Lcd_Print_String(char *a)
        Lcd_Print_Char(a[i]);  //Split the string using pointers and call the Char function 
 }
 
+void ADC_Initialize()
+{
+  ADCON0 = 0b01000001; //ADC ON and Fosc/16 is selected
+  ADCON1 = 0b11000000; // Internal reference voltage is selected
+}
 
+unsigned int ADC_Read(unsigned char channel)
+{
+  ADCON0 &= 0x11000101; //Clearing the Channel Selection Bits
+  ADCON0 |= channel<<3; //Setting the required Bits
+  __delay_ms(2); //Acquisition time to charge hold capacitor
+  GO_nDONE = 1; //Initializes A/D Conversion
+  while(GO_nDONE); //Wait for A/D Conversion to complete
+  return ((ADRESH<<8)+ADRESL); //Returns Result
+}
 int main()
 {
-    unsigned int a;
     TRISB = 0x00;
     Lcd_Start();
     Lcd_Clear();
-
     
     char voltage[8];
     char current[8];
     char current_limit[8];
+    
+    ADC_Initialize();
+    
     while(1)
     {
         Lcd_Set_Cursor(1,1);
-        float f = 12.5;
+        int adc = (ADC_Read(0));
+        float f = adc*0.488281/100;
         sprintf(voltage, "%.2f", (float) f);
         Lcd_Print_String(voltage);
-        Lcd_Print_String(" V ");
-        f = 12.5;
+        Lcd_Print_String(" V    ");
+        adc = (ADC_Read(1));
+        f = adc*0.488281/100;
         sprintf(current, "%.2f", (float) f); 
         Lcd_Print_String(current);
         Lcd_Print_String(" A ");
         Lcd_Set_Cursor(2,1);
         Lcd_Print_String("Curr Limit ");
-        f = 2.5;
+        adc = (ADC_Read(2));
+        f = adc*0.488281/100;
         sprintf(current_limit, "%.1f", (float) f); 
         Lcd_Print_String(current_limit);
         Lcd_Print_String(" A");

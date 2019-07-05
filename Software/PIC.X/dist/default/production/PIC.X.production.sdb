@@ -39,6 +39,8 @@
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "242
 [v ___flsub __flsub `(d  1 e 4 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
 "8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 "15 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\Umul16.c
@@ -51,24 +53,38 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"31 C:\Users\Dhrumil\Desktop\Power-Supply-PCB1\trunk\Software\PIC.X\main.c
+"32 C:\Users\Dhrumil\Desktop\Power-Supply-PCB1\trunk\Software\PIC.X\main.c
 [v _Lcd_SetBit Lcd_SetBit `(v  1 e 1 0 ]
-"54
+"55
 [v _Lcd_Cmd Lcd_Cmd `(v  1 e 1 0 ]
-"63
+"64
 [v _Lcd_Clear Lcd_Clear `(i  1 e 2 0 ]
-"69
+"70
 [v _Lcd_Set_Cursor Lcd_Set_Cursor `(v  1 e 1 0 ]
-"90
+"91
 [v _Lcd_Start Lcd_Start `(v  1 e 1 0 ]
-"108
+"109
 [v _Lcd_Print_Char Lcd_Print_Char `(v  1 e 1 0 ]
-"124
+"125
 [v _Lcd_Print_String Lcd_Print_String `(v  1 e 1 0 ]
 "132
+[v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
+"138
+[v _ADC_Read ADC_Read `(ui  1 e 2 0 ]
+"147
 [v _main main `(i  1 e 2 0 ]
-"1275 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f876a.h
+"1052 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f876a.h
+[v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
+"1059
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @31 ]
+"1275
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1997
+[v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
+"2004
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @159 ]
+"2353
+[v _GO_nDONE GO_nDONE `VEb  1 e 0 @250 ]
 "2434
 [v _RB1 RB1 `VEb  1 e 0 @49 ]
 "2437
@@ -87,18 +103,20 @@
 [v __powers_ _powers_ `DC[13]d  1 e 52 0 ]
 "39
 [v __npowers_ _npowers_ `DC[13]d  1 e 52 0 ]
-"132 C:\Users\Dhrumil\Desktop\Power-Supply-PCB1\trunk\Software\PIC.X\main.c
+"147 C:\Users\Dhrumil\Desktop\Power-Supply-PCB1\trunk\Software\PIC.X\main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"146
-[v main@f f `f  1 a 4 62 ]
-"142
-[v main@current_limit current_limit `[8]uc  1 a 8 54 ]
-"141
-[v main@current current `[8]uc  1 a 8 46 ]
-"140
-[v main@voltage voltage `[8]uc  1 a 8 38 ]
 "163
+[v main@f f `f  1 a 4 62 ]
+"162
+[v main@adc adc `i  1 a 2 66 ]
+"155
+[v main@current_limit current_limit `[8]uc  1 a 8 54 ]
+"154
+[v main@current current `[8]uc  1 a 8 46 ]
+"153
+[v main@voltage voltage `[8]uc  1 a 8 38 ]
+"182
 } 0
 "500 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\doprnt.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
@@ -106,9 +124,9 @@
 [v sprintf@sp sp `*.4uc  1 a 1 wreg ]
 "528
 [v sprintf@fval fval `d  1 a 4 30 ]
-[u S254 . 4 `ul 1 vd 4 0 `d 1 integ 4 0 ]
+[u S264 . 4 `ul 1 vd 4 0 `d 1 integ 4 0 ]
 "538
-[v sprintf@tmpval tmpval `S254  1 a 4 23 ]
+[v sprintf@tmpval tmpval `S264  1 a 4 23 ]
 "540
 [v sprintf@val val `ul  1 a 4 17 ]
 "512
@@ -204,17 +222,17 @@
 "8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S452 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S462 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S457 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S460 . 4 `l 1 i 4 0 `d 1 f 4 0 `S452 1 fAsBytes 4 0 `S457 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S460  1 a 4 24 ]
+[s S467 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S470 . 4 `l 1 i 4 0 `d 1 f 4 0 `S462 1 fAsBytes 4 0 `S467 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S470  1 a 4 24 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 18 ]
-[s S529 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S539 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S532 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S529 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S532  1 a 2 28 ]
+[u S542 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S539 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S542  1 a 2 28 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 23 ]
 "11
@@ -366,72 +384,106 @@
 [v ___fleq@ff2 ff2 `d  1 p 4 4 ]
 "12
 } 0
-"90 C:\Users\Dhrumil\Desktop\Power-Supply-PCB1\trunk\Software\PIC.X\main.c
+"8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+{
+"21
+[v ___fldiv@grs grs `ul  1 a 4 50 ]
+"22
+[v ___fldiv@rem rem `ul  1 a 4 43 ]
+"20
+[v ___fldiv@new_exp new_exp `i  1 a 2 48 ]
+"19
+[v ___fldiv@aexp aexp `uc  1 a 1 55 ]
+"18
+[v ___fldiv@bexp bexp `uc  1 a 1 54 ]
+"16
+[v ___fldiv@sign sign `uc  1 a 1 47 ]
+"8
+[v ___fldiv@a a `d  1 p 4 30 ]
+[v ___fldiv@b b `d  1 p 4 34 ]
+"185
+} 0
+"91 C:\Users\Dhrumil\Desktop\Power-Supply-PCB1\trunk\Software\PIC.X\main.c
 [v _Lcd_Start Lcd_Start `(v  1 e 1 0 ]
 {
-"106
+"107
 } 0
-"69
+"70
 [v _Lcd_Set_Cursor Lcd_Set_Cursor `(v  1 e 1 0 ]
 {
 [v Lcd_Set_Cursor@a a `uc  1 a 1 wreg ]
-"71
+"72
 [v Lcd_Set_Cursor@temp temp `uc  1 a 1 10 ]
 [v Lcd_Set_Cursor@y y `uc  1 a 1 9 ]
 [v Lcd_Set_Cursor@z z `uc  1 a 1 8 ]
-"69
+"70
 [v Lcd_Set_Cursor@a a `uc  1 a 1 wreg ]
 [v Lcd_Set_Cursor@b b `uc  1 p 1 4 ]
-"72
+"73
 [v Lcd_Set_Cursor@a a `uc  1 a 1 7 ]
-"88
+"89
 } 0
-"124
+"125
 [v _Lcd_Print_String Lcd_Print_String `(v  1 e 1 0 ]
 {
-"126
+"127
 [v Lcd_Print_String@i i `i  1 a 2 0 ]
-"124
+"125
 [v Lcd_Print_String@a a `*.26uc  1 p 2 9 ]
-"129
+"130
 } 0
-"108
+"109
 [v _Lcd_Print_Char Lcd_Print_Char `(v  1 e 1 0 ]
 {
 [v Lcd_Print_Char@data data `uc  1 a 1 wreg ]
-"120
-[v Lcd_Print_Char@i_65 i `i  1 a 2 7 ]
-"116
+"121
+[v Lcd_Print_Char@i_70 i `i  1 a 2 7 ]
+"117
 [v Lcd_Print_Char@i i `i  1 a 2 5 ]
-"110
+"111
 [v Lcd_Print_Char@Upper_Nibble Upper_Nibble `uc  1 a 1 3 ]
 [v Lcd_Print_Char@Lower_Nibble Lower_Nibble `uc  1 a 1 2 ]
-"108
+"109
 [v Lcd_Print_Char@data data `uc  1 a 1 wreg ]
-"111
+"112
 [v Lcd_Print_Char@data data `uc  1 a 1 4 ]
-"122
+"123
 } 0
-"63
+"64
 [v _Lcd_Clear Lcd_Clear `(i  1 e 2 0 ]
 {
-"67
+"68
 } 0
-"54
+"55
 [v _Lcd_Cmd Lcd_Cmd `(v  1 e 1 0 ]
 {
 [v Lcd_Cmd@a a `uc  1 a 1 wreg ]
 [v Lcd_Cmd@a a `uc  1 a 1 wreg ]
-"56
+"57
 [v Lcd_Cmd@a a `uc  1 a 1 3 ]
-"61
+"62
 } 0
-"31
+"32
 [v _Lcd_SetBit Lcd_SetBit `(v  1 e 1 0 ]
 {
 [v Lcd_SetBit@data_bit data_bit `uc  1 a 1 wreg ]
 [v Lcd_SetBit@data_bit data_bit `uc  1 a 1 wreg ]
-"33
+"34
 [v Lcd_SetBit@data_bit data_bit `uc  1 a 1 0 ]
-"52
+"53
+} 0
+"138
+[v _ADC_Read ADC_Read `(ui  1 e 2 0 ]
+{
+[v ADC_Read@channel channel `uc  1 a 1 wreg ]
+[v ADC_Read@channel channel `uc  1 a 1 wreg ]
+"140
+[v ADC_Read@channel channel `uc  1 a 1 4 ]
+"146
+} 0
+"132
+[v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
+{
+"136
 } 0

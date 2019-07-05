@@ -1758,7 +1758,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 # 21 "main.c" 2
-# 31 "main.c"
+# 32 "main.c"
 void Lcd_SetBit(char data_bit)
 {
     if(data_bit& 1)
@@ -1859,32 +1859,50 @@ void Lcd_Print_String(char *a)
        Lcd_Print_Char(a[i]);
 }
 
+void ADC_Initialize()
+{
+  ADCON0 = 0b01000001;
+  ADCON1 = 0b11000000;
+}
 
+unsigned int ADC_Read(unsigned char channel)
+{
+  ADCON0 &= 0x11000101;
+  ADCON0 |= channel<<3;
+  _delay((unsigned long)((2)*(4000000/4000.0)));
+  GO_nDONE = 1;
+  while(GO_nDONE);
+  return ((ADRESH<<8)+ADRESL);
+}
 int main()
 {
-    unsigned int a;
     TRISB = 0x00;
     Lcd_Start();
     Lcd_Clear();
 
-
     char voltage[8];
     char current[8];
     char current_limit[8];
+
+    ADC_Initialize();
+
     while(1)
     {
         Lcd_Set_Cursor(1,1);
-        float f = 12.5;
+        int adc = (ADC_Read(0));
+        float f = adc*0.488281/100;
         sprintf(voltage, "%.2f", (float) f);
         Lcd_Print_String(voltage);
-        Lcd_Print_String(" V ");
-        f = 12.5;
+        Lcd_Print_String(" V    ");
+        adc = (ADC_Read(1));
+        f = adc*0.488281/100;
         sprintf(current, "%.2f", (float) f);
         Lcd_Print_String(current);
         Lcd_Print_String(" A ");
         Lcd_Set_Cursor(2,1);
         Lcd_Print_String("Curr Limit ");
-        f = 2.5;
+        adc = (ADC_Read(2));
+        f = adc*0.488281/100;
         sprintf(current_limit, "%.1f", (float) f);
         Lcd_Print_String(current_limit);
         Lcd_Print_String(" A");
