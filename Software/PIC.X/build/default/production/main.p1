@@ -676,101 +676,252 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 151:     Lcd_Clear();
 [e ( _Lcd_Clear ..  ]
 "153
-[; ;main.c: 153:     char voltage[8];
-[v _voltage `uc ~T0 @X0 -> 8 `i a ]
+[; ;main.c: 153:     char str[8];
+[v _str `uc ~T0 @X0 -> 8 `i a ]
 "154
-[; ;main.c: 154:     char current[8];
-[v _current `uc ~T0 @X0 -> 8 `i a ]
+[; ;main.c: 154:     float voltage_val = 0.0;
+[v _voltage_val `f ~T0 @X0 1 a ]
+[e = _voltage_val -> .0.0 `f ]
 "155
-[; ;main.c: 155:     char current_limit[8];
-[v _current_limit `uc ~T0 @X0 -> 8 `i a ]
+[; ;main.c: 155:     float current_val = 0.0;
+[v _current_val `f ~T0 @X0 1 a ]
+[e = _current_val -> .0.0 `f ]
+"156
+[; ;main.c: 156:     float RLim = 0.0;
+[v _RLim `f ~T0 @X0 1 a ]
+[e = _RLim -> .0.0 `f ]
 "157
-[; ;main.c: 157:     ADC_Initialize();
-[e ( _ADC_Initialize ..  ]
+[; ;main.c: 157:     float current_limit_val = 0.0;
+[v _current_limit_val `f ~T0 @X0 1 a ]
+[e = _current_limit_val -> .0.0 `f ]
 "159
-[; ;main.c: 159:     while(1)
-[e :U 130 ]
+[; ;main.c: 159:     ADC_Initialize();
+[e ( _ADC_Initialize ..  ]
 "160
-[; ;main.c: 160:     {
-{
-"161
-[; ;main.c: 161:         Lcd_Set_Cursor(1,1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"162
-[; ;main.c: 162:         int adc = (ADC_Read(0));
+[; ;main.c: 160:     int adc = 0;
 [v _adc `i ~T0 @X0 1 a ]
-[e = _adc -> ( _ADC_Read (1 -> -> 0 `i `uc `i ]
+[e = _adc -> 0 `i ]
+"162
+[; ;main.c: 162:     Lcd_Set_Cursor(1,6);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 6 `i `uc ]
 "163
-[; ;main.c: 163:         float f = adc*0.488281/100;
-[v _f `f ~T0 @X0 1 a ]
-[e = _f -> / * -> _adc `d .0.488281 -> -> 100 `i `d `f ]
+[; ;main.c: 163:     Lcd_Print_String("V");
+[e ( _Lcd_Print_String (1 :s 1C ]
 "164
-[; ;main.c: 164:         sprintf(voltage, "%.2f", (float) f);
-[e ( _sprintf (1 , (. , &U _voltage :s 1C -> _f `d ]
+[; ;main.c: 164:     Lcd_Set_Cursor(1,16);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 16 `i `uc ]
 "165
-[; ;main.c: 165:         Lcd_Print_String(voltage);
-[e ( _Lcd_Print_String (1 &U _voltage ]
-"166
-[; ;main.c: 166:         Lcd_Print_String(" V    ");
+[; ;main.c: 165:     Lcd_Print_String("A");
 [e ( _Lcd_Print_String (1 :s 2C ]
-"167
-[; ;main.c: 167:         adc = (ADC_Read(1));
-[e = _adc -> ( _ADC_Read (1 -> -> 1 `i `uc `i ]
-"168
-[; ;main.c: 168:         f = adc*0.488281/100;
-[e = _f -> / * -> _adc `d .0.488281 -> -> 100 `i `d `f ]
-"169
-[; ;main.c: 169:         sprintf(current, "%.2f", (float) f);
-[e ( _sprintf (1 , (. , &U _current :s 3C -> _f `d ]
-"170
-[; ;main.c: 170:         Lcd_Print_String(current);
-[e ( _Lcd_Print_String (1 &U _current ]
-"171
-[; ;main.c: 171:         Lcd_Print_String(" A ");
-[e ( _Lcd_Print_String (1 :s 4C ]
-"172
-[; ;main.c: 172:         Lcd_Set_Cursor(2,1);
+"166
+[; ;main.c: 166:     Lcd_Set_Cursor(2,1);
 [e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+"167
+[; ;main.c: 167:     Lcd_Print_String("Curr Limit");
+[e ( _Lcd_Print_String (1 :s 3C ]
+"168
+[; ;main.c: 168:     Lcd_Set_Cursor(2,16);
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 16 `i `uc ]
+"169
+[; ;main.c: 169:     Lcd_Print_String("A");
+[e ( _Lcd_Print_String (1 :s 4C ]
+"171
+[; ;main.c: 171:     adc = (ADC_Read(0));
+[e = _adc -> ( _ADC_Read (1 -> -> 0 `i `uc `i ]
+"172
+[; ;main.c: 172:     voltage_val = adc*0.488281/100/0.2;
+[e = _voltage_val -> / / * -> _adc `d .0.488281 -> -> 100 `i `d .0.2 `f ]
 "173
-[; ;main.c: 173:         Lcd_Print_String("Curr Limit ");
-[e ( _Lcd_Print_String (1 :s 5C ]
+[; ;main.c: 173:     float voltage_val_prev = voltage_val;
+[v _voltage_val_prev `f ~T0 @X0 1 a ]
+[e = _voltage_val_prev _voltage_val ]
 "174
-[; ;main.c: 174:         adc = (ADC_Read(2));
-[e = _adc -> ( _ADC_Read (1 -> -> 2 `i `uc `i ]
+[; ;main.c: 174:     sprintf(str, "%.2f", (float) voltage_val);
+[e ( _sprintf (1 , (. , &U _str :s 5C -> _voltage_val `d ]
 "175
-[; ;main.c: 175:         f = adc*0.488281/100;
-[e = _f -> / * -> _adc `d .0.488281 -> -> 100 `i `d `f ]
+[; ;main.c: 175:     Lcd_Set_Cursor(1,1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
 "176
-[; ;main.c: 176:         sprintf(current_limit, "%.1f", (float) f);
-[e ( _sprintf (1 , (. , &U _current_limit :s 6C -> _f `d ]
+[; ;main.c: 176:     Lcd_Print_String(str);
+[e ( _Lcd_Print_String (1 &U _str ]
 "177
-[; ;main.c: 177:         Lcd_Print_String(current_limit);
-[e ( _Lcd_Print_String (1 &U _current_limit ]
-"178
-[; ;main.c: 178:         Lcd_Print_String(" A");
-[e ( _Lcd_Print_String (1 :s 7C ]
+[; ;main.c: 177:     voltage_val_prev = voltage_val;
+[e = _voltage_val_prev _voltage_val ]
 "179
-[; ;main.c: 179:         _delay((unsigned long)((2000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main.c: 179:     adc = (ADC_Read(1));
+[e = _adc -> ( _ADC_Read (1 -> -> 1 `i `uc `i ]
 "180
-[; ;main.c: 180:     }
+[; ;main.c: 180:     current_val = adc*0.488281/100;
+[e = _current_val -> / * -> _adc `d .0.488281 -> -> 100 `i `d `f ]
+"181
+[; ;main.c: 181:     float current_val_prev = current_val;
+[v _current_val_prev `f ~T0 @X0 1 a ]
+[e = _current_val_prev _current_val ]
+"182
+[; ;main.c: 182:     sprintf(str, "%.2f", (float) current_val);
+[e ( _sprintf (1 , (. , &U _str :s 6C -> _current_val `d ]
+"183
+[; ;main.c: 183:     Lcd_Set_Cursor(1,11);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 11 `i `uc ]
+"184
+[; ;main.c: 184:     Lcd_Print_String(str);
+[e ( _Lcd_Print_String (1 &U _str ]
+"185
+[; ;main.c: 185:     current_val_prev = current_val;
+[e = _current_val_prev _current_val ]
+"188
+[; ;main.c: 188:     adc = (ADC_Read(2));
+[e = _adc -> ( _ADC_Read (1 -> -> 2 `i `uc `i ]
+"189
+[; ;main.c: 189:     current_limit_val = adc*0.488281/100;
+[e = _current_limit_val -> / * -> _adc `d .0.488281 -> -> 100 `i `d `f ]
+"190
+[; ;main.c: 190:     float current_limit_val_prev = current_limit_val;
+[v _current_limit_val_prev `f ~T0 @X0 1 a ]
+[e = _current_limit_val_prev _current_limit_val ]
+"191
+[; ;main.c: 191:     sprintf(str, "%.1f", (float) current_limit_val);
+[e ( _sprintf (1 , (. , &U _str :s 7C -> _current_limit_val `d ]
+"192
+[; ;main.c: 192:     Lcd_Set_Cursor(2,12);
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 12 `i `uc ]
+"193
+[; ;main.c: 193:     Lcd_Print_String(str);
+[e ( _Lcd_Print_String (1 &U _str ]
+"194
+[; ;main.c: 194:     current_limit_val_prev = current_limit_val;
+[e = _current_limit_val_prev _current_limit_val ]
+"195
+[; ;main.c: 195:     while(1)
+[e :U 130 ]
+"196
+[; ;main.c: 196:     {
+{
+"198
+[; ;main.c: 198:         adc = (ADC_Read(0));
+[e = _adc -> ( _ADC_Read (1 -> -> 0 `i `uc `i ]
+"199
+[; ;main.c: 199:         voltage_val = adc*0.488281/100/0.2;
+[e = _voltage_val -> / / * -> _adc `d .0.488281 -> -> 100 `i `d .0.2 `f ]
+"200
+[; ;main.c: 200:         if (voltage_val != voltage_val_prev)
+[e $ ! != _voltage_val _voltage_val_prev 132  ]
+"201
+[; ;main.c: 201:         {
+{
+"202
+[; ;main.c: 202:             sprintf(str, "%.2f", (float) voltage_val);
+[e ( _sprintf (1 , (. , &U _str :s 8C -> _voltage_val `d ]
+"203
+[; ;main.c: 203:             Lcd_Set_Cursor(1,1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"204
+[; ;main.c: 204:             Lcd_Print_String(str);
+[e ( _Lcd_Print_String (1 &U _str ]
+"205
+[; ;main.c: 205:             voltage_val_prev = voltage_val;
+[e = _voltage_val_prev _voltage_val ]
+"206
+[; ;main.c: 206:         }
+}
+[e :U 132 ]
+"209
+[; ;main.c: 209:         adc = (ADC_Read(1));
+[e = _adc -> ( _ADC_Read (1 -> -> 1 `i `uc `i ]
+"210
+[; ;main.c: 210:         current_val = adc*0.488281/100;
+[e = _current_val -> / * -> _adc `d .0.488281 -> -> 100 `i `d `f ]
+"211
+[; ;main.c: 211:         if (current_val != current_val_prev)
+[e $ ! != _current_val _current_val_prev 133  ]
+"212
+[; ;main.c: 212:         {
+{
+"213
+[; ;main.c: 213:             sprintf(str, "%.2f", (float) current_val);
+[e ( _sprintf (1 , (. , &U _str :s 9C -> _current_val `d ]
+"214
+[; ;main.c: 214:             Lcd_Set_Cursor(1,11);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 11 `i `uc ]
+"215
+[; ;main.c: 215:             Lcd_Print_String(str);
+[e ( _Lcd_Print_String (1 &U _str ]
+"216
+[; ;main.c: 216:             current_val_prev = current_val;
+[e = _current_val_prev _current_val ]
+"217
+[; ;main.c: 217:         }
+}
+[e :U 133 ]
+"219
+[; ;main.c: 219:         adc = (ADC_Read(2));
+[e = _adc -> ( _ADC_Read (1 -> -> 2 `i `uc `i ]
+"220
+[; ;main.c: 220:         current_limit_val = adc*0.488281/100;
+[e = _current_limit_val -> / * -> _adc `d .0.488281 -> -> 100 `i `d `f ]
+"221
+[; ;main.c: 221:         RLim = 10000*current_limit_val/(5-current_limit_val);
+[e = _RLim / * -> -> 10000 `i `f _current_limit_val - -> -> 5 `i `f _current_limit_val ]
+"222
+[; ;main.c: 222:         current_limit_val = 0.8*1000/RLim;
+[e = _current_limit_val -> / * .0.8 -> -> 1000 `i `d -> _RLim `d `f ]
+"224
+[; ;main.c: 224:         if (current_limit_val != current_limit_val_prev)
+[e $ ! != _current_limit_val _current_limit_val_prev 134  ]
+"225
+[; ;main.c: 225:         {
+{
+"226
+[; ;main.c: 226:             if (current_limit_val >= 2.5)
+[e $ ! >= -> _current_limit_val `d .2.5 135  ]
+"227
+[; ;main.c: 227:             {
+{
+"228
+[; ;main.c: 228:                 current_limit_val = 2.5;
+[e = _current_limit_val -> .2.5 `f ]
+"229
+[; ;main.c: 229:             }
+}
+[e :U 135 ]
+"230
+[; ;main.c: 230:             sprintf(str, "%.1f", (float) current_limit_val);
+[e ( _sprintf (1 , (. , &U _str :s 10C -> _current_limit_val `d ]
+"231
+[; ;main.c: 231:             Lcd_Set_Cursor(2,12);
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 12 `i `uc ]
+"232
+[; ;main.c: 232:             Lcd_Print_String(str);
+[e ( _Lcd_Print_String (1 &U _str ]
+"233
+[; ;main.c: 233:             current_limit_val_prev = current_limit_val;
+[e = _current_limit_val_prev _current_limit_val ]
+"234
+[; ;main.c: 234:         }
+}
+[e :U 134 ]
+"237
+[; ;main.c: 237:     }
 }
 [e :U 129 ]
 [e $U 130  ]
 [e :U 131 ]
-"181
-[; ;main.c: 181:     return 0;
+"238
+[; ;main.c: 238:     return 0;
 [e ) -> 0 `i ]
 [e $UE 128  ]
-"182
-[; ;main.c: 182: }
+"239
+[; ;main.c: 239: }
 [e :UE 128 ]
 }
 [p f _sprintf 8462336 ]
-[a 1C 37 46 50 102 0 ]
-[a 3C 37 46 50 102 0 ]
-[a 6C 37 46 49 102 0 ]
-[a 7C 32 65 0 ]
-[a 5C 67 117 114 114 32 76 105 109 105 116 32 0 ]
-[a 4C 32 65 32 0 ]
-[a 2C 32 86 32 32 32 32 0 ]
+[a 3C 67 117 114 114 32 76 105 109 105 116 0 ]
+[a 5C 37 46 50 102 0 ]
+[a 6C 37 46 50 102 0 ]
+[a 8C 37 46 50 102 0 ]
+[a 9C 37 46 50 102 0 ]
+[a 7C 37 46 49 102 0 ]
+[a 10C 37 46 49 102 0 ]
+[a 1C 86 0 ]
+[a 2C 65 0 ]
+[a 4C 65 0 ]

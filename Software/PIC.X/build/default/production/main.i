@@ -1880,33 +1880,90 @@ int main()
     Lcd_Start();
     Lcd_Clear();
 
-    char voltage[8];
-    char current[8];
-    char current_limit[8];
+    char str[8];
+    float voltage_val = 0.0;
+    float current_val = 0.0;
+    float RLim = 0.0;
+    float current_limit_val = 0.0;
 
     ADC_Initialize();
+    int adc = 0;
 
+    Lcd_Set_Cursor(1,6);
+    Lcd_Print_String("V");
+    Lcd_Set_Cursor(1,16);
+    Lcd_Print_String("A");
+    Lcd_Set_Cursor(2,1);
+    Lcd_Print_String("Curr Limit");
+    Lcd_Set_Cursor(2,16);
+    Lcd_Print_String("A");
+
+    adc = (ADC_Read(0));
+    voltage_val = adc*0.488281/100/0.2;
+    float voltage_val_prev = voltage_val;
+    sprintf(str, "%.2f", (float) voltage_val);
+    Lcd_Set_Cursor(1,1);
+    Lcd_Print_String(str);
+    voltage_val_prev = voltage_val;
+
+    adc = (ADC_Read(1));
+    current_val = adc*0.488281/100;
+    float current_val_prev = current_val;
+    sprintf(str, "%.2f", (float) current_val);
+    Lcd_Set_Cursor(1,11);
+    Lcd_Print_String(str);
+    current_val_prev = current_val;
+
+
+    adc = (ADC_Read(2));
+    current_limit_val = adc*0.488281/100;
+    float current_limit_val_prev = current_limit_val;
+    sprintf(str, "%.1f", (float) current_limit_val);
+    Lcd_Set_Cursor(2,12);
+    Lcd_Print_String(str);
+    current_limit_val_prev = current_limit_val;
     while(1)
     {
-        Lcd_Set_Cursor(1,1);
-        int adc = (ADC_Read(0));
-        float f = adc*0.488281/100;
-        sprintf(voltage, "%.2f", (float) f);
-        Lcd_Print_String(voltage);
-        Lcd_Print_String(" V    ");
+
+        adc = (ADC_Read(0));
+        voltage_val = adc*0.488281/100/0.2;
+        if (voltage_val != voltage_val_prev)
+        {
+            sprintf(str, "%.2f", (float) voltage_val);
+            Lcd_Set_Cursor(1,1);
+            Lcd_Print_String(str);
+            voltage_val_prev = voltage_val;
+        }
+
+
         adc = (ADC_Read(1));
-        f = adc*0.488281/100;
-        sprintf(current, "%.2f", (float) f);
-        Lcd_Print_String(current);
-        Lcd_Print_String(" A ");
-        Lcd_Set_Cursor(2,1);
-        Lcd_Print_String("Curr Limit ");
+        current_val = adc*0.488281/100;
+        if (current_val != current_val_prev)
+        {
+            sprintf(str, "%.2f", (float) current_val);
+            Lcd_Set_Cursor(1,11);
+            Lcd_Print_String(str);
+            current_val_prev = current_val;
+        }
+
         adc = (ADC_Read(2));
-        f = adc*0.488281/100;
-        sprintf(current_limit, "%.1f", (float) f);
-        Lcd_Print_String(current_limit);
-        Lcd_Print_String(" A");
-        _delay((unsigned long)((2000)*(4000000/4000.0)));
+        current_limit_val = adc*0.488281/100;
+        RLim = 10000*current_limit_val/(5-current_limit_val);
+        current_limit_val = 0.8*1000/RLim;
+
+        if (current_limit_val != current_limit_val_prev)
+        {
+            if (current_limit_val >= 2.5)
+            {
+                current_limit_val = 2.5;
+            }
+            sprintf(str, "%.1f", (float) current_limit_val);
+            Lcd_Set_Cursor(2,12);
+            Lcd_Print_String(str);
+            current_limit_val_prev = current_limit_val;
+        }
+
+
     }
     return 0;
 }
