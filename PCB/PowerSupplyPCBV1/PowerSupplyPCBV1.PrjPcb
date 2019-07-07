@@ -123,65 +123,82 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
+[Document6]
+DocumentPath=Schematics\Power_Input.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=OWNOKQXT
+
 [Parameter1]
-Name=SheetTotal
-Value=1
+Name=Copyright
+Value=Copyright 2019
 
 [Parameter2]
-Name=SchRevision
-Value=1
-
-[Parameter3]
-Name=SchNumber
-Value=PS-PCB-SCH-V1
-
-[Parameter4]
-Name=SchDrawnBy
+Name=DrawnBy
 Value=Dhrumil Parikh
 
+[Parameter3]
+Name=PageSize
+Value=B
+
+[Parameter4]
+Name=PCBAssyNumber
+Value=
+
 [Parameter5]
-Name=SchDate
+Name=PCBDate
 Value=1-July-2019
 
 [Parameter6]
-Name=ProjectTitle
-Value=Power Supply PCB
+Name=PCBLayout
+Value=
 
 [Parameter7]
-Name=PCBRevision
-Value=1.0
+Name=PCBName
+Value=Power Supply PCB
 
 [Parameter8]
 Name=PCBPartNumber
 Value=PS-PCB-V1
 
 [Parameter9]
-Name=PCBName
-Value=Power Supply PCB
+Name=PCBRevision
+Value=1.0
 
 [Parameter10]
-Name=PCBLayout
-Value=
+Name=ProjectTitle
+Value=Power Supply PCB
 
 [Parameter11]
-Name=PCBDate
+Name=SchDate
 Value=1-July-2019
 
 [Parameter12]
-Name=PCBAssyNumber
-Value=
-
-[Parameter13]
-Name=PageSize
-Value=B
-
-[Parameter14]
-Name=DrawnBy
+Name=SchDrawnBy
 Value=Dhrumil Parikh
 
+[Parameter13]
+Name=SchNumber
+Value=PS-PCB-SCH-V1
+
+[Parameter14]
+Name=SchRevision
+Value=1
+
 [Parameter15]
-Name=Copyright
-Value=Copyright 2019
+Name=SheetTotal
+Value=1
 
 [Configuration1]
 Name=Sources
