@@ -48,7 +48,7 @@ AnnotateScope=All
 AnnotateOrder=1
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
+ClassGenCCAutoEnabled=0
 ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
@@ -65,7 +65,7 @@ AnnotateScope=All
 AnnotateOrder=0
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
+ClassGenCCAutoEnabled=0
 ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
@@ -133,72 +133,89 @@ AnnotateScope=All
 AnnotateOrder=-1
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
+ClassGenCCAutoEnabled=0
 ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=OWNOKQXT
 
+[Document7]
+DocumentPath=pcb\PowerSupply.PcbDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=XIAHYYEV
+
 [Parameter1]
-Name=Copyright
-Value=Copyright 2019
+Name=SheetTotal
+Value=1
 
 [Parameter2]
-Name=DrawnBy
-Value=Dhrumil Parikh
+Name=SchRevision
+Value=1
 
 [Parameter3]
-Name=PageSize
-Value=B
+Name=SchNumber
+Value=PS-PCB-SCH-V1
 
 [Parameter4]
-Name=PCBAssyNumber
-Value=
+Name=SchDrawnBy
+Value=Dhrumil Parikh
 
 [Parameter5]
-Name=PCBDate
+Name=SchDate
 Value=1-July-2019
 
 [Parameter6]
-Name=PCBLayout
-Value=
+Name=ProjectTitle
+Value=Power Supply PCB
 
 [Parameter7]
-Name=PCBName
-Value=Power Supply PCB
+Name=PCBRevision
+Value=1.0
 
 [Parameter8]
 Name=PCBPartNumber
 Value=PS-PCB-V1
 
 [Parameter9]
-Name=PCBRevision
-Value=1.0
-
-[Parameter10]
-Name=ProjectTitle
+Name=PCBName
 Value=Power Supply PCB
 
+[Parameter10]
+Name=PCBLayout
+Value=
+
 [Parameter11]
-Name=SchDate
+Name=PCBDate
 Value=1-July-2019
 
 [Parameter12]
-Name=SchDrawnBy
-Value=Dhrumil Parikh
+Name=PCBAssyNumber
+Value=
 
 [Parameter13]
-Name=SchNumber
-Value=PS-PCB-SCH-V1
+Name=PageSize
+Value=B
 
 [Parameter14]
-Name=SchRevision
-Value=1
+Name=DrawnBy
+Value=Dhrumil Parikh
 
 [Parameter15]
-Name=SheetTotal
-Value=1
+Name=Copyright
+Value=Copyright 2019
 
 [Configuration1]
 Name=Sources
@@ -975,7 +992,7 @@ Type6=2
 Type7=1
 Type8=1
 Type9=1
-Type10=1
+Type10=0
 Type11=2
 Type12=2
 Type13=2
