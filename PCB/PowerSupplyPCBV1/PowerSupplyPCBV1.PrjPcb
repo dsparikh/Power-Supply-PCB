@@ -157,6 +157,10 @@ GenerateClassCluster=0
 DocumentUniqueId=BRCUVFLR
 
 [GeneratedDocument1]
+DocumentPath=Project Outputs for PowerSupplyPCBV1\Design Rule Check - PowerSupply.html
+DItemRevisionGUID=
+
+[GeneratedDocument2]
 DocumentPath=Project Outputs for PowerSupplyPCBV1\Power_Supply.NET
 DItemRevisionGUID=
 
@@ -339,7 +343,7 @@ OutputDefault20=0
 [OutputGroup2]
 Name=Simulator Outputs
 Description=
-TargetPrinter=Canon MP560 series Printer WS
+TargetPrinter=Microsoft Print to PDF
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 
 [OutputGroup3]
