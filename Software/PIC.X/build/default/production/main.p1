@@ -825,93 +825,93 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 206:         }
 }
 [e :U 132 ]
-"209
-[; ;main.c: 209:         adc = (ADC_Read(1));
+"208
+[; ;main.c: 208:         adc = (ADC_Read(1));
 [e = _adc -> ( _ADC_Read (1 -> -> 1 `i `uc `i ]
-"210
-[; ;main.c: 210:         current_val = adc*0.488281/100;
+"209
+[; ;main.c: 209:         current_val = adc*0.488281/100;
 [e = _current_val -> / * -> _adc `d .0.488281 -> -> 100 `i `d `f ]
-"211
-[; ;main.c: 211:         if (current_val != current_val_prev)
+"210
+[; ;main.c: 210:         if (current_val != current_val_prev)
 [e $ ! != _current_val _current_val_prev 133  ]
-"212
-[; ;main.c: 212:         {
+"211
+[; ;main.c: 211:         {
 {
-"213
-[; ;main.c: 213:             sprintf(str, "%.2f", (float) current_val);
+"212
+[; ;main.c: 212:             sprintf(str, "%.2f", (float) current_val);
 [e ( _sprintf (1 , (. , &U _str :s 9C -> _current_val `d ]
-"214
-[; ;main.c: 214:             Lcd_Set_Cursor(1,11);
+"213
+[; ;main.c: 213:             Lcd_Set_Cursor(1,11);
 [e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 11 `i `uc ]
-"215
-[; ;main.c: 215:             Lcd_Print_String(str);
+"214
+[; ;main.c: 214:             Lcd_Print_String(str);
 [e ( _Lcd_Print_String (1 &U _str ]
-"216
-[; ;main.c: 216:             current_val_prev = current_val;
+"215
+[; ;main.c: 215:             current_val_prev = current_val;
 [e = _current_val_prev _current_val ]
-"217
-[; ;main.c: 217:         }
+"216
+[; ;main.c: 216:         }
 }
 [e :U 133 ]
-"219
-[; ;main.c: 219:         adc = (ADC_Read(2));
+"218
+[; ;main.c: 218:         adc = (ADC_Read(2));
 [e = _adc -> ( _ADC_Read (1 -> -> 2 `i `uc `i ]
-"220
-[; ;main.c: 220:         current_limit_val = adc*0.488281/100;
+"219
+[; ;main.c: 219:         current_limit_val = adc*0.488281/100;
 [e = _current_limit_val -> / * -> _adc `d .0.488281 -> -> 100 `i `d `f ]
-"221
-[; ;main.c: 221:         RLim = 10000*current_limit_val/(5-current_limit_val);
+"220
+[; ;main.c: 220:         RLim = 10000*current_limit_val/(5-current_limit_val);
 [e = _RLim / * -> -> 10000 `i `f _current_limit_val - -> -> 5 `i `f _current_limit_val ]
-"222
-[; ;main.c: 222:         current_limit_val = 0.8*1000/RLim;
+"221
+[; ;main.c: 221:         current_limit_val = 0.8*1000/RLim;
 [e = _current_limit_val -> / * .0.8 -> -> 1000 `i `d -> _RLim `d `f ]
-"224
-[; ;main.c: 224:         if (current_limit_val != current_limit_val_prev)
+"223
+[; ;main.c: 223:         if (current_limit_val != current_limit_val_prev)
 [e $ ! != _current_limit_val _current_limit_val_prev 134  ]
+"224
+[; ;main.c: 224:         {
+{
 "225
-[; ;main.c: 225:         {
-{
-"226
-[; ;main.c: 226:             if (current_limit_val >= 2.5)
+[; ;main.c: 225:             if (current_limit_val >= 2.5)
 [e $ ! >= -> _current_limit_val `d .2.5 135  ]
-"227
-[; ;main.c: 227:             {
+"226
+[; ;main.c: 226:             {
 {
-"228
-[; ;main.c: 228:                 current_limit_val = 2.5;
+"227
+[; ;main.c: 227:                 current_limit_val = 2.5;
 [e = _current_limit_val -> .2.5 `f ]
-"229
-[; ;main.c: 229:             }
+"228
+[; ;main.c: 228:             }
 }
 [e :U 135 ]
-"230
-[; ;main.c: 230:             sprintf(str, "%.1f", (float) current_limit_val);
+"229
+[; ;main.c: 229:             sprintf(str, "%.1f", (float) current_limit_val);
 [e ( _sprintf (1 , (. , &U _str :s 10C -> _current_limit_val `d ]
-"231
-[; ;main.c: 231:             Lcd_Set_Cursor(2,12);
+"230
+[; ;main.c: 230:             Lcd_Set_Cursor(2,12);
 [e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 12 `i `uc ]
-"232
-[; ;main.c: 232:             Lcd_Print_String(str);
+"231
+[; ;main.c: 231:             Lcd_Print_String(str);
 [e ( _Lcd_Print_String (1 &U _str ]
-"233
-[; ;main.c: 233:             current_limit_val_prev = current_limit_val;
+"232
+[; ;main.c: 232:             current_limit_val_prev = current_limit_val;
 [e = _current_limit_val_prev _current_limit_val ]
-"234
-[; ;main.c: 234:         }
+"233
+[; ;main.c: 233:         }
 }
 [e :U 134 ]
-"237
-[; ;main.c: 237:     }
+"236
+[; ;main.c: 236:     }
 }
 [e :U 129 ]
 [e $U 130  ]
 [e :U 131 ]
-"238
-[; ;main.c: 238:     return 0;
+"237
+[; ;main.c: 237:     return 0;
 [e ) -> 0 `i ]
 [e $UE 128  ]
-"239
-[; ;main.c: 239: }
+"238
+[; ;main.c: 238: }
 [e :UE 128 ]
 }
 [p f _sprintf 8462336 ]

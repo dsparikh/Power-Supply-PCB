@@ -1935,7 +1935,6 @@ int main()
             voltage_val_prev = voltage_val;
         }
 
-
         adc = (ADC_Read(1));
         current_val = adc*0.488281/100;
         if (current_val != current_val_prev)

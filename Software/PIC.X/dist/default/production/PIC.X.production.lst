@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.05 build -831301201 
-                                                                                               Fri Jul 05 19:25:46 2019
+                                                                                               Wed Oct 30 12:10:12 2019
 
 Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1 
      1                           	processor	16F876A
@@ -1838,7 +1838,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   1823  0E07  00C7               	movwf	main@voltage_val_prev^(0+128)
   1824  0E08                     l3714:	
   1825                           
-  1826                           ;main.c: 209:         adc = (ADC_Read(1));
+  1826                           ;main.c: 208:         adc = (ADC_Read(1));
   1827  0E08  3001               	movlw	1
   1828  0E09  160A  158A  219F  120A  158A  	fcall	_ADC_Read
   1829  0E0E  0871               	movf	?_ADC_Read+1,w
@@ -1848,7 +1848,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   1833  0E12  0870               	movf	?_ADC_Read,w
   1834  0E13  00E7               	movwf	main@adc^(0+128)
   1835                           
-  1836                           ;main.c: 210:         current_val = adc*0.488281/100;
+  1836                           ;main.c: 209:         current_val = adc*0.488281/100;
   1837  0E14  3042               	movlw	66
   1838  0E15  00A3               	movwf	(___fldiv@a+3)^(0+128)
   1839  0E16  30C8               	movlw	200
@@ -1927,7 +1927,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   1912  0E6B  0820               	movf	?___fldiv^(0+128),w
   1913  0E6C  00E3               	movwf	main@current_val^(0+128)
   1914                           
-  1915                           ;main.c: 211:         if (current_val != current_val_prev)
+  1915                           ;main.c: 210:         if (current_val != current_val_prev)
   1916  0E6D  0866               	movf	(main@current_val+3)^(0+128),w
   1917  0E6E  00F3               	movwf	___fleq@ff1+3
   1918  0E6F  0865               	movf	(main@current_val+2)^(0+128),w
@@ -1948,7 +1948,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   1933  0E82  1803               	btfsc	3,0
   1934  0E83  2EB9               	goto	l3728
   1935                           
-  1936                           ;main.c: 212:         {;main.c: 213:             sprintf(str, "%.2f", (float) current_va
+  1936                           ;main.c: 211:         {;main.c: 212:             sprintf(str, "%.2f", (float) current_va
       +                          l);
   1937  0E84  30A1               	movlw	(low ((STR_5-__stringbase)| (0+32768)))& (0+255)
   1938  0E85  1283               	bcf	3,5	;RP0=0, select bank0
@@ -1969,7 +1969,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   1953  0E94  30D3               	movlw	(low (main@str| 0))& (0+255)
   1954  0E95  120A  118A  2205  120A  158A  	fcall	_sprintf
   1955                           
-  1956                           ;main.c: 214:             Lcd_Set_Cursor(1,11);
+  1956                           ;main.c: 213:             Lcd_Set_Cursor(1,11);
   1957  0E9A  300B               	movlw	11
   1958  0E9B  1283               	bcf	3,5	;RP0=0, select bank0
   1959  0E9C  1303               	bcf	3,6	;RP1=0, select bank0
@@ -1979,14 +1979,14 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   1963  0EA0  3001               	movlw	1
   1964  0EA1  160A  158A  22BF  120A  158A  	fcall	_Lcd_Set_Cursor
   1965                           
-  1966                           ;main.c: 215:             Lcd_Print_String(str);
+  1966                           ;main.c: 214:             Lcd_Print_String(str);
   1967  0EA6  30D3               	movlw	(low (main@str| 0))& (0+255)
   1968  0EA7  00F9               	movwf	Lcd_Print_String@a
   1969  0EA8  3000               	movlw	0
   1970  0EA9  00FA               	movwf	Lcd_Print_String@a+1
   1971  0EAA  160A  158A  2236  120A  158A  	fcall	_Lcd_Print_String
   1972                           
-  1973                           ;main.c: 216:             current_val_prev = current_val;
+  1973                           ;main.c: 215:             current_val_prev = current_val;
   1974  0EAF  1683               	bsf	3,5	;RP0=1, select bank1
   1975  0EB0  1303               	bcf	3,6	;RP1=0, select bank1
   1976  0EB1  0866               	movf	(main@current_val+3)^(0+128),w
@@ -1999,7 +1999,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   1983  0EB8  00CB               	movwf	main@current_val_prev^(0+128)
   1984  0EB9                     l3728:	
   1985                           
-  1986                           ;main.c: 219:         adc = (ADC_Read(2));
+  1986                           ;main.c: 218:         adc = (ADC_Read(2));
   1987  0EB9  3002               	movlw	2
   1988  0EBA  160A  158A  219F  120A  158A  	fcall	_ADC_Read
   1989  0EBF  0871               	movf	?_ADC_Read+1,w
@@ -2009,7 +2009,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   1993  0EC3  0870               	movf	?_ADC_Read,w
   1994  0EC4  00E7               	movwf	main@adc^(0+128)
   1995                           
-  1996                           ;main.c: 220:         current_limit_val = adc*0.488281/100;
+  1996                           ;main.c: 219:         current_limit_val = adc*0.488281/100;
   1997  0EC5  3042               	movlw	66
   1998  0EC6  00A3               	movwf	(___fldiv@a+3)^(0+128)
   1999  0EC7  30C8               	movlw	200
@@ -2088,7 +2088,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   2072  0F1C  0820               	movf	?___fldiv^(0+128),w
   2073  0F1D  00E9               	movwf	main@current_limit_val^(0+128)
   2074                           
-  2075                           ;main.c: 221:         RLim = 10000*current_limit_val/(5-current_limit_val);
+  2075                           ;main.c: 220:         RLim = 10000*current_limit_val/(5-current_limit_val);
   2076  0F1E  086C               	movf	(main@current_limit_val+3)^(0+128),w
   2077  0F1F  1283               	bcf	3,5	;RP0=0, select bank0
   2078  0F20  1303               	bcf	3,6	;RP1=0, select bank0
@@ -2215,7 +2215,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   2199  0FA5  0820               	movf	?___fldiv^(0+128),w
   2200  0FA6  00C3               	movwf	main@RLim^(0+128)
   2201                           
-  2202                           ;main.c: 222:         current_limit_val = 0.8*1000/RLim;
+  2202                           ;main.c: 221:         current_limit_val = 0.8*1000/RLim;
   2203  0FA7  0846               	movf	(main@RLim+3)^(0+128),w
   2204  0FA8  00A3               	movwf	(___fldiv@a+3)^(0+128)
   2205  0FA9  0845               	movf	(main@RLim+2)^(0+128),w
@@ -2244,7 +2244,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   2228  0FC4  0820               	movf	?___fldiv^(0+128),w
   2229  0FC5  00E9               	movwf	main@current_limit_val^(0+128)
   2230                           
-  2231                           ;main.c: 224:         if (current_limit_val != current_limit_val_prev)
+  2231                           ;main.c: 223:         if (current_limit_val != current_limit_val_prev)
   2232  0FC6  086C               	movf	(main@current_limit_val+3)^(0+128),w
   2233  0FC7  00F3               	movwf	___fleq@ff1+3
   2234  0FC8  086B               	movf	(main@current_limit_val+2)^(0+128),w
@@ -2265,7 +2265,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   2249  0FDB  1803               	btfsc	3,0
   2250  0FDC  2D3C               	goto	l3698
   2251                           
-  2252                           ;main.c: 225:         {;main.c: 226:             if (current_limit_val >= 2.5)
+  2252                           ;main.c: 224:         {;main.c: 225:             if (current_limit_val >= 2.5)
   2253  0FDD  1683               	bsf	3,5	;RP0=1, select bank1
   2254  0FDE  1303               	bcf	3,6	;RP1=0, select bank1
   2255  0FDF  086C               	movf	(main@current_limit_val+3)^(0+128),w
@@ -2288,7 +2288,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   2272  0FF4  1C03               	btfss	3,0
   2273  0FF5  2D07               	goto	L1
   2274                           
-  2275                           ;main.c: 227:             {;main.c: 228:                 current_limit_val = 2.5;
+  2275                           ;main.c: 226:             {;main.c: 227:                 current_limit_val = 2.5;
   2276  0FF6  3040               	movlw	64
   2277  0FF7  1683               	bsf	3,5	;RP0=1, select bank1
   2278  0FF8  1303               	bcf	3,6	;RP1=0, select bank1
@@ -2300,9 +2300,9 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   2284  0FFE  3000               	movlw	0
   2285  0FFF  2D06               	goto	L2
   2286  1000                     __end_of_main:	
-  2287                           ;main.c: 231:             Lcd_Set_Cursor(2,12);
+  2287                           ;main.c: 230:             Lcd_Set_Cursor(2,12);
   2288                           
-  2289                           ;main.c: 230:             sprintf(str, "%.1f", (float) current_limit_val);
+  2289                           ;main.c: 229:             sprintf(str, "%.1f", (float) current_limit_val);
   2290                           
   2291                           
   2292                           	psect	text1
@@ -10724,7 +10724,7 @@ DATA                 0      0       0      12        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.05 build -831301201 
-Symbol Table                                                                                   Fri Jul 05 19:25:46 2019
+Symbol Table                                                                                   Wed Oct 30 12:10:12 2019
 
               ___fldiv@aexp 00B9                ___fldiv@bexp 00B8                           pc 0002  
               ___fldiv@sign 00B1                 __CFG_CP$OFF 0000                          l33 190C  
